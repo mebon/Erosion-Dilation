@@ -1,0 +1,9 @@
+C:\Programlama\Github\Erosion-Dilation\ErosionDilation\ErosionDilation\bin\Debug\ErosionDilation.exe.config
+C:\Programlama\Github\Erosion-Dilation\ErosionDilation\ErosionDilation\bin\Debug\ErosionDilation.exe
+C:\Programlama\Github\Erosion-Dilation\ErosionDilation\ErosionDilation\bin\Debug\ErosionDilation.pdb
+C:\Programlama\Github\Erosion-Dilation\ErosionDilation\ErosionDilation\obj\Debug\ErosionDilation.csprojAssemblyReference.cache
+C:\Programlama\Github\Erosion-Dilation\ErosionDilation\ErosionDilation\obj\Debug\ErosionDilation.ErosionveDilation.resources
+C:\Programlama\Github\Erosion-Dilation\ErosionDilation\ErosionDilation\obj\Debug\ErosionDilation.Properties.Resources.resources
+C:\Programlama\Github\Erosion-Dilation\ErosionDilation\ErosionDilation\obj\Debug\ErosionDilation.csproj.GenerateResource.cache
+C:\Programlama\Github\Erosion-Dilation\ErosionDilation\ErosionDilation\obj\Debug\ErosionDilation.exe
+C:\Programlama\Github\Erosion-Dilation\ErosionDilation\ErosionDilation\obj\Debug\ErosionDilation.pdb
