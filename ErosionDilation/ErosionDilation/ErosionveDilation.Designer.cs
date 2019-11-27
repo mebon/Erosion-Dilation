@@ -388,11 +388,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(668, 444);
             this.Controls.Add(this.panel8);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ErosionveDilation";
-            this.Text = "Form1";
+            this.ShowIcon = false;
+            this.Text = "Erosion ve Dilation";
             this.Load += new System.EventHandler(this.ErosionveDilation_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Muhammed Emin Berkay KOCAOĞLU 201513171070
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -124,6 +126,7 @@ namespace ErosionDilation
 
         private void buttonErosion_Click(object sender, EventArgs e)
         {
+            int[,] xyler = new int[bmp.Height, bmp.Width];
             int b1, b2, b3, b4, b5;
             Color cl;
             for (int x = 1; x < bmp.Height-1; x++)
@@ -132,33 +135,54 @@ namespace ErosionDilation
                 {
                     cl = bmp.GetPixel(x, y);
                     b1 = cl.R;
-                    cl = bmp.GetPixel(x - 1, y);
-                    b2 = cl.R;
-                    cl = bmp.GetPixel(x + 1, y);
-                    b3 = cl.R;
-                    cl = bmp.GetPixel(x, y-1);
-                    b4 = cl.R;
-                    cl = bmp.GetPixel(x, y+1);
-                    b5 = cl.R;
-                    if (b1 == 255 && b2 == 255 && b3 == 255 && b4 == 255 && b5 == 255)
+                    if(b1 == 255)
+                    {
+                        cl = bmp.GetPixel(x - 1, y);
+                        b2 = cl.R;
+                        cl = bmp.GetPixel(x + 1, y);
+                        b3 = cl.R;
+                        cl = bmp.GetPixel(x, y - 1);
+                        b4 = cl.R;
+                        cl = bmp.GetPixel(x, y + 1);
+                        b5 = cl.R;
+                        if (b2 == 255 && b3 == 255 && b4 == 255 && b5 == 255)
+                        {
+                            xyler[x, y] = 255;
+                        }
+                        else
+                        {
+                            xyler[x, y] = 0;
+                        }
+                    }
+                    
+                }
+            }
+            for (int x = 1; x < bmp.Height - 1; x++)
+            {
+                for (int y = 1; y < bmp.Width - 1; y++)
+                {
+                    if (xyler[x, y] == 255)
                     {
                         bmp.SetPixel(x, y, Color.FromArgb(255, 255, 255));
                     }
                     else bmp.SetPixel(x, y, Color.FromArgb(0, 0, 0));
+
                 }
             }
-            pictureBox1.Image = bmp;
+                    pictureBox1.Image = bmp;
             this.Refresh();
         }
 
         private void buttonDilation_Click(object sender, EventArgs e)
         {
+            int[,] xyler = new int[bmp.Height, bmp.Width];
             int b1, b2, b3, b4, b5;
             Color cl;
             for (int x = 1; x < bmp.Height - 1; x++)
             {
                 for (int y = 1; y < bmp.Width - 1; y++)
                 {
+                    
                     cl = bmp.GetPixel(x, y);
                     b1 = cl.R;
                     cl = bmp.GetPixel(x - 1, y);
@@ -169,11 +193,26 @@ namespace ErosionDilation
                     b4 = cl.R;
                     cl = bmp.GetPixel(x, y + 1);
                     b5 = cl.R;
-                    if (b1 == 255 || b2 == 255 || b3 == 255 || b4 == 255 || b5 == 255)
+                    if (b2 == 255 || b3 == 255 || b4 == 255 || b5 == 255)
+                    {
+                        xyler[x, y] = 255;
+                    }
+                    else
+                    {
+                        xyler[x, y] = 0;
+                    }   
+                }
+            }
+            for (int x = 1; x < bmp.Height - 1; x++)
+            {
+                for (int y = 1; y < bmp.Width - 1; y++)
+                {
+                    if (xyler[x, y] == 255)
                     {
                         bmp.SetPixel(x, y, Color.FromArgb(255, 255, 255));
                     }
                     else bmp.SetPixel(x, y, Color.FromArgb(0, 0, 0));
+
                 }
             }
             pictureBox1.Image = bmp;
@@ -287,3 +326,4 @@ namespace ErosionDilation
         }
     }
 }
+//Muhammed Emin Berkay KOCAOĞLU 201513171070
