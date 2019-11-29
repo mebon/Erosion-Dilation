@@ -101,9 +101,9 @@ namespace ErosionDilation
         {
             if (bmp != null)
             {
-                for (int y = 0; y < bmp.Height; y++)
+                for (int x = 0; x < bmp.Height-1; x++)
                 {
-                    for (int x = 0; x < bmp.Width; x++)
+                    for (int y = 0; y < bmp.Width-1; y++)
                     {
                         Color c = bmp.GetPixel(x, y);
 
@@ -123,19 +123,18 @@ namespace ErosionDilation
                 this.Refresh();
             }
         }
-
-        private void buttonErosion_Click(object sender, EventArgs e)
+        private void Erosion()
         {
             int[,] xyler = new int[bmp.Height, bmp.Width];
             int b1, b2, b3, b4, b5;
             Color cl;
-            for (int x = 1; x < bmp.Height-1; x++)
+            for (int x = 1; x < bmp.Height - 1; x++)
             {
-                for (int y = 1; y < bmp.Width-1; y++)
+                for (int y = 1; y < bmp.Width - 1; y++)
                 {
                     cl = bmp.GetPixel(x, y);
                     b1 = cl.R;
-                    if(b1 == 255)
+                    if (b1 == 255)
                     {
                         cl = bmp.GetPixel(x - 1, y);
                         b2 = cl.R;
@@ -154,7 +153,7 @@ namespace ErosionDilation
                             xyler[x, y] = 0;
                         }
                     }
-                    
+
                 }
             }
             for (int x = 1; x < bmp.Height - 1; x++)
@@ -169,11 +168,10 @@ namespace ErosionDilation
 
                 }
             }
-                    pictureBox1.Image = bmp;
+            pictureBox1.Image = bmp;
             this.Refresh();
         }
-
-        private void buttonDilation_Click(object sender, EventArgs e)
+        private void Dilation()
         {
             int[,] xyler = new int[bmp.Height, bmp.Width];
             int b1, b2, b3, b4, b5;
@@ -182,7 +180,7 @@ namespace ErosionDilation
             {
                 for (int y = 1; y < bmp.Width - 1; y++)
                 {
-                    
+
                     cl = bmp.GetPixel(x, y);
                     b1 = cl.R;
                     cl = bmp.GetPixel(x - 1, y);
@@ -200,7 +198,7 @@ namespace ErosionDilation
                     else
                     {
                         xyler[x, y] = 0;
-                    }   
+                    }
                 }
             }
             for (int x = 1; x < bmp.Height - 1; x++)
@@ -217,6 +215,15 @@ namespace ErosionDilation
             }
             pictureBox1.Image = bmp;
             this.Refresh();
+        }
+        private void buttonErosion_Click(object sender, EventArgs e)
+        {
+            Erosion();
+        }
+
+        private void buttonDilation_Click(object sender, EventArgs e)
+        {
+            Dilation();
         }
 
         private void buttonTersSimetri_Click(object sender, EventArgs e)
@@ -324,6 +331,156 @@ namespace ErosionDilation
             pictureBox1.Image = bmp;
             this.Refresh();
         }
+
+        private void buttonOpening_Click(object sender, EventArgs e)
+        {
+            Erosion();
+            Dilation();
+        }
+
+        private void buttonClosing_Click(object sender, EventArgs e)
+        {
+            Dilation();
+            Erosion();
+        }
+
+        private void buttonConvulation_Click(object sender, EventArgs e)
+        {
+            Color cl;
+            int convulationSonuc;
+            int[,] xyler = new int[bmp.Height, bmp.Width];
+            int[,] convulation = { { -1, -1, -1 }, { -1, 8, -1 }, { -1, -1, -1 } };
+            int b1, b2, b3, b4, b5, b6, b7, b8, b9;
+            for (int x = 1; x < bmp.Height - 2; x++)
+            {
+                for(int y = 1; y < bmp.Width - 2; y++)
+                {
+                    cl = bmp.GetPixel(x, y);
+                    b5 = cl.R;
+                    if(b5 == 255)
+                    {
+                        cl = bmp.GetPixel(x - 1, y - 1);
+                        b1 = cl.R;
+                        cl = bmp.GetPixel(x, y - 1);
+                        b2 = cl.R;
+                        cl = bmp.GetPixel(x + 1, y - 1);
+                        b3 = cl.R;
+                        cl = bmp.GetPixel(x - 1, y);
+                        b4 = cl.R;
+                        cl = bmp.GetPixel(x + 1, y);
+                        b6 = cl.R;
+                        cl = bmp.GetPixel(x - 1, y + 1);
+                        b7 = cl.R;
+                        cl = bmp.GetPixel(x, y + 1);
+                        b8 = cl.R;
+                        cl = bmp.GetPixel(x + 1, y + 1);
+                        b9 = cl.R;
+
+                        convulationSonuc = convulation[0, 0] * b1 + convulation[0, 1] * b2 + convulation[0, 2] * b3 +
+                                           convulation[1, 0] * b4 + convulation[1, 1] * b5 + convulation[1, 2] * b6 +
+                                           convulation[2, 0] * b7 + convulation[2, 1] * b8 + convulation[2, 2] * b9;
+
+                        if (convulationSonuc > 255) xyler[x, y] = 255;
+                        else if (convulationSonuc < 0) xyler[x, y] = 0;
+                        else xyler[x, y] = convulationSonuc;
+                    }
+                    
+
+
+                }
+            }
+
+            for (int x = 1; x < bmp.Height - 2; x++)
+            {
+                for (int y = 1; y < bmp.Width - 2; y++)
+                {
+                    if (xyler[x, y] == 255)
+                    {
+                        bmp.SetPixel(x, y, Color.FromArgb(255, 255, 255));
+                    }
+                    else bmp.SetPixel(x, y, Color.FromArgb(0, 0, 0));
+
+                }
+            }
+            pictureBox1.Image = bmp;
+            this.Refresh();
+
+        }
+
+        private void buttonLaplacian_Click(object sender, EventArgs e)
+        {
+            int[,] xyler = new int[bmp.Height, bmp.Width];
+            Color cl;
+            int laplacian;
+            int[,] laplacianMatris = { { 1, 1, 1 }, { 1, -8, 1 }, { 1, 1, 1 } };
+            int b1, b2, b3, b4, b5, b6, b7, b8, b9;
+            for (int x = 1; x < bmp.Height - 2; x++)
+            {
+                for (int y = 1; y < bmp.Width - 2; y++)
+                {
+                    cl = bmp.GetPixel(x, y);
+                    b5 = cl.R;
+                    if (b5 == 0)
+                    {
+                        cl = bmp.GetPixel(x - 1, y - 1);
+                        b1 = cl.R;
+                        cl = bmp.GetPixel(x, y - 1);
+                        b2 = cl.R;
+                        cl = bmp.GetPixel(x + 1, y - 1);
+                        b3 = cl.R;
+                        cl = bmp.GetPixel(x - 1, y);
+                        b4 = cl.R;
+
+                        cl = bmp.GetPixel(x + 1, y);
+                        b6 = cl.R;
+                        cl = bmp.GetPixel(x - 1, y + 1);
+                        b7 = cl.R;
+                        cl = bmp.GetPixel(x, y + 1);
+                        b8 = cl.R;
+                        cl = bmp.GetPixel(x + 1, y + 1);
+                        b9 = cl.R;
+
+                        laplacian = laplacianMatris[0, 0] * b1 + laplacianMatris[0, 1] * b2 + laplacianMatris[0, 2] * b3 +
+                                           laplacianMatris[1, 0] * b4 + laplacianMatris[1, 1] * b5 + laplacianMatris[1, 2] * b6 +
+                                           laplacianMatris[2, 0] * b7 + laplacianMatris[2, 1] * b8 + laplacianMatris[2, 2] * b9;
+
+                        if (laplacian > 255) xyler[x, y] = 255;
+                        else if (laplacian < 0) xyler[x, y] = 0;
+                        else xyler[x, y] = laplacian;
+                    }
+
+                }
+            }
+
+            for (int x = 1; x < bmp.Height - 2; x++)
+            {
+                for (int y = 1; y < bmp.Width - 2; y++)
+                {
+                    if (xyler[x, y] == 255)
+                    {
+                        bmp.SetPixel(x, y, Color.FromArgb(255, 255, 255));
+                    }
+                    else bmp.SetPixel(x, y, Color.FromArgb(0, 0, 0));
+
+                }
+            }
+            pictureBox1.Image = bmp;
+            this.Refresh();
+        }
+
+        private void buttonSifirla_Click(object sender, EventArgs e)
+        {
+            if (bmp != null)
+            {
+                radioButtonRGB.Checked = false;
+                radioButtonGrayScale.Checked = false;
+                radioButtonBitmap.Checked = false;
+                bmp = (Bitmap)Bitmap.FromFile(openFileDialog1.FileName);
+                pictureBox1.Image = bmp;
+                this.Refresh();
+            }
+        }
     }
+;
 }
 //Muhammed Emin Berkay KOCAOĞLU 201513171070

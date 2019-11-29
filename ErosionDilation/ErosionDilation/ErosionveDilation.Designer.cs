@@ -57,6 +57,13 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.buttonTersSimetri = new System.Windows.Forms.Button();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.buttonClosing = new System.Windows.Forms.Button();
+            this.buttonOpening = new System.Windows.Forms.Button();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.buttonLaplacian = new System.Windows.Forms.Button();
+            this.buttonConvulation = new System.Windows.Forms.Button();
+            this.buttonSifirla = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -68,6 +75,8 @@
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -115,7 +124,7 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.numericUpDownDeger);
-            this.panel3.Location = new System.Drawing.Point(325, 90);
+            this.panel3.Location = new System.Drawing.Point(325, 18);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(300, 41);
             this.panel3.TabIndex = 2;
@@ -153,13 +162,14 @@
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.buttonSifirla);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.radioButtonBitmap);
             this.panel4.Controls.Add(this.radioButtonGrayScale);
             this.panel4.Controls.Add(this.radioButtonRGB);
-            this.panel4.Location = new System.Drawing.Point(325, 137);
+            this.panel4.Location = new System.Drawing.Point(325, 65);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(300, 41);
             this.panel4.TabIndex = 3;
@@ -168,7 +178,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label8.Location = new System.Drawing.Point(198, 3);
+            this.label8.Location = new System.Drawing.Point(235, 4);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 15);
             this.label8.TabIndex = 6;
@@ -178,7 +188,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label7.Location = new System.Drawing.Point(119, 3);
+            this.label7.Location = new System.Drawing.Point(168, 4);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 15);
             this.label7.TabIndex = 5;
@@ -188,7 +198,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(56, 3);
+            this.label6.Location = new System.Drawing.Point(129, 4);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 15);
             this.label6.TabIndex = 4;
@@ -197,7 +207,7 @@
             // radioButtonBitmap
             // 
             this.radioButtonBitmap.AutoSize = true;
-            this.radioButtonBitmap.Location = new System.Drawing.Point(215, 22);
+            this.radioButtonBitmap.Location = new System.Drawing.Point(252, 23);
             this.radioButtonBitmap.Name = "radioButtonBitmap";
             this.radioButtonBitmap.Size = new System.Drawing.Size(14, 13);
             this.radioButtonBitmap.TabIndex = 2;
@@ -208,7 +218,7 @@
             // radioButtonGrayScale
             // 
             this.radioButtonGrayScale.AutoSize = true;
-            this.radioButtonGrayScale.Location = new System.Drawing.Point(142, 22);
+            this.radioButtonGrayScale.Location = new System.Drawing.Point(191, 23);
             this.radioButtonGrayScale.Name = "radioButtonGrayScale";
             this.radioButtonGrayScale.Size = new System.Drawing.Size(14, 13);
             this.radioButtonGrayScale.TabIndex = 1;
@@ -219,7 +229,7 @@
             // radioButtonRGB
             // 
             this.radioButtonRGB.AutoSize = true;
-            this.radioButtonRGB.Location = new System.Drawing.Point(66, 22);
+            this.radioButtonRGB.Location = new System.Drawing.Point(139, 23);
             this.radioButtonRGB.Name = "radioButtonRGB";
             this.radioButtonRGB.Size = new System.Drawing.Size(14, 13);
             this.radioButtonRGB.TabIndex = 0;
@@ -233,15 +243,15 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel5.Controls.Add(this.buttonSetPikselEksi);
             this.panel5.Controls.Add(this.buttonSetPikselArti);
-            this.panel5.Location = new System.Drawing.Point(325, 184);
+            this.panel5.Location = new System.Drawing.Point(325, 112);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(300, 77);
+            this.panel5.Size = new System.Drawing.Size(300, 70);
             this.panel5.TabIndex = 3;
             // 
             // buttonSetPikselEksi
             // 
             this.buttonSetPikselEksi.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonSetPikselEksi.Location = new System.Drawing.Point(157, 24);
+            this.buttonSetPikselEksi.Location = new System.Drawing.Point(157, 19);
             this.buttonSetPikselEksi.Name = "buttonSetPikselEksi";
             this.buttonSetPikselEksi.Size = new System.Drawing.Size(115, 30);
             this.buttonSetPikselEksi.TabIndex = 3;
@@ -252,7 +262,7 @@
             // buttonSetPikselArti
             // 
             this.buttonSetPikselArti.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonSetPikselArti.Location = new System.Drawing.Point(25, 24);
+            this.buttonSetPikselArti.Location = new System.Drawing.Point(25, 19);
             this.buttonSetPikselArti.Name = "buttonSetPikselArti";
             this.buttonSetPikselArti.Size = new System.Drawing.Size(115, 30);
             this.buttonSetPikselArti.TabIndex = 2;
@@ -266,9 +276,9 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel6.Controls.Add(this.buttonDilation);
             this.panel6.Controls.Add(this.buttonErosion);
-            this.panel6.Location = new System.Drawing.Point(325, 267);
+            this.panel6.Location = new System.Drawing.Point(325, 188);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(300, 77);
+            this.panel6.Size = new System.Drawing.Size(300, 70);
             this.panel6.TabIndex = 3;
             // 
             // buttonDilation
@@ -301,7 +311,7 @@
             this.panel7.Controls.Add(this.label3);
             this.panel7.Controls.Add(this.label2);
             this.panel7.Controls.Add(this.label1);
-            this.panel7.Location = new System.Drawing.Point(325, 350);
+            this.panel7.Location = new System.Drawing.Point(325, 420);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(300, 51);
             this.panel7.TabIndex = 3;
@@ -350,6 +360,8 @@
             // 
             this.panel8.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel8.Controls.Add(this.panel11);
+            this.panel8.Controls.Add(this.panel10);
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Controls.Add(this.panel1);
             this.panel8.Controls.Add(this.panel7);
@@ -360,7 +372,7 @@
             this.panel8.Controls.Add(this.panel4);
             this.panel8.Location = new System.Drawing.Point(12, 12);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(644, 420);
+            this.panel8.Size = new System.Drawing.Size(644, 487);
             this.panel8.TabIndex = 1;
             // 
             // panel9
@@ -368,7 +380,7 @@
             this.panel9.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel9.Controls.Add(this.buttonTersSimetri);
-            this.panel9.Location = new System.Drawing.Point(325, 18);
+            this.panel9.Location = new System.Drawing.Point(19, 405);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(300, 66);
             this.panel9.TabIndex = 5;
@@ -384,13 +396,90 @@
             this.buttonTersSimetri.UseVisualStyleBackColor = true;
             this.buttonTersSimetri.Click += new System.EventHandler(this.buttonTersSimetri_Click);
             // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel10.Controls.Add(this.buttonClosing);
+            this.panel10.Controls.Add(this.buttonOpening);
+            this.panel10.Location = new System.Drawing.Point(325, 264);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(300, 70);
+            this.panel10.TabIndex = 6;
+            // 
+            // buttonClosing
+            // 
+            this.buttonClosing.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonClosing.Location = new System.Drawing.Point(157, 18);
+            this.buttonClosing.Name = "buttonClosing";
+            this.buttonClosing.Size = new System.Drawing.Size(115, 30);
+            this.buttonClosing.TabIndex = 5;
+            this.buttonClosing.Text = "Closing\r";
+            this.buttonClosing.UseVisualStyleBackColor = true;
+            this.buttonClosing.Click += new System.EventHandler(this.buttonClosing_Click);
+            // 
+            // buttonOpening
+            // 
+            this.buttonOpening.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonOpening.Location = new System.Drawing.Point(25, 18);
+            this.buttonOpening.Name = "buttonOpening";
+            this.buttonOpening.Size = new System.Drawing.Size(115, 30);
+            this.buttonOpening.TabIndex = 4;
+            this.buttonOpening.Text = "Opening\r\n";
+            this.buttonOpening.UseVisualStyleBackColor = true;
+            this.buttonOpening.Click += new System.EventHandler(this.buttonOpening_Click);
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel11.Controls.Add(this.buttonLaplacian);
+            this.panel11.Controls.Add(this.buttonConvulation);
+            this.panel11.Location = new System.Drawing.Point(325, 340);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(300, 70);
+            this.panel11.TabIndex = 7;
+            // 
+            // buttonLaplacian
+            // 
+            this.buttonLaplacian.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonLaplacian.Location = new System.Drawing.Point(157, 18);
+            this.buttonLaplacian.Name = "buttonLaplacian";
+            this.buttonLaplacian.Size = new System.Drawing.Size(115, 30);
+            this.buttonLaplacian.TabIndex = 5;
+            this.buttonLaplacian.Text = "Laplacian\r\n";
+            this.buttonLaplacian.UseVisualStyleBackColor = true;
+            this.buttonLaplacian.Click += new System.EventHandler(this.buttonLaplacian_Click);
+            // 
+            // buttonConvulation
+            // 
+            this.buttonConvulation.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonConvulation.Location = new System.Drawing.Point(25, 18);
+            this.buttonConvulation.Name = "buttonConvulation";
+            this.buttonConvulation.Size = new System.Drawing.Size(115, 30);
+            this.buttonConvulation.TabIndex = 4;
+            this.buttonConvulation.Text = "Convolution\r\n";
+            this.buttonConvulation.UseVisualStyleBackColor = true;
+            this.buttonConvulation.Click += new System.EventHandler(this.buttonConvulation_Click);
+            // 
+            // buttonSifirla
+            // 
+            this.buttonSifirla.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonSifirla.Location = new System.Drawing.Point(25, 4);
+            this.buttonSifirla.Name = "buttonSifirla";
+            this.buttonSifirla.Size = new System.Drawing.Size(87, 30);
+            this.buttonSifirla.TabIndex = 4;
+            this.buttonSifirla.Text = "Sıfırla";
+            this.buttonSifirla.UseVisualStyleBackColor = true;
+            this.buttonSifirla.Click += new System.EventHandler(this.buttonSifirla_Click);
+            // 
             // ErosionveDilation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(668, 444);
+            this.ClientSize = new System.Drawing.Size(668, 511);
             this.Controls.Add(this.panel8);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -412,6 +501,8 @@
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -447,6 +538,13 @@
         private System.Windows.Forms.RadioButton radioButtonGrayScale;
         private System.Windows.Forms.RadioButton radioButtonRGB;
         private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button buttonClosing;
+        private System.Windows.Forms.Button buttonOpening;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Button buttonLaplacian;
+        private System.Windows.Forms.Button buttonConvulation;
+        private System.Windows.Forms.Button buttonSifirla;
     }
 }
 
