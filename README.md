@@ -13,6 +13,10 @@
 - Görüntüyü karartma  
 - Erosion(Aşındırma) yapma  
 - Dilation(Genişletme) yapma  
+- Opening(önce erosion sonra dilation) işlemi
+- Closing(önce dilation sonra erosion) işlemi
+- Convolution filter yapma
+- Laplacian filter işlemi  
 özelliklerini barındırır.  
 
 **İlk Hali**  
@@ -38,4 +42,20 @@
   
 **Dilation İşlemi**  
 ![Screenshot_63](https://user-images.githubusercontent.com/50452706/69748399-4b38da00-1159-11ea-8ce0-63936ac5615f.png)
+  
+**Opening İşlemi**  
+![Screenshot_69](https://user-images.githubusercontent.com/50452706/69868981-8a337080-12bc-11ea-84ab-f3d6eee37844.png)
+  
+**Closing İşlemi**  
+![Screenshot_70](https://user-images.githubusercontent.com/50452706/69868995-99b2b980-12bc-11ea-93ec-1b101aec3461.png)
+  
+**Convolution İşlemi**  
+![Screenshot_71](https://user-images.githubusercontent.com/50452706/69869010-acc58980-12bc-11ea-88d7-9d39276b8b32.png)
+  
+**Laplacian İşlemi**  
+![Screenshot_72](https://user-images.githubusercontent.com/50452706/69869307-83f1c400-12bd-11ea-980c-856d5b4c9b4b.png)
+
+
+
+
   
