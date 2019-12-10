@@ -17,6 +17,9 @@
 - Closing(önce dilation sonra erosion) işlemi
 - Convolution filter yapma
 - Laplacian filter işlemi  
+(10.12.2019 güncellemesi ile)  
+- Gradiant filter yapma  
+- Standart defination yapma 
 özelliklerini barındırır.  
 
 **İlk Hali**  
@@ -54,8 +57,14 @@
   
 **Laplacian İşlemi**  
 ![Screenshot_72](https://user-images.githubusercontent.com/50452706/69869307-83f1c400-12bd-11ea-980c-856d5b4c9b4b.png)
-
-
-
-
+  
+**10.12.2019 Sonrası**  
+![Screenshot_42](https://user-images.githubusercontent.com/50452706/70567853-c661ad80-1ba7-11ea-816f-81697380e03c.png)
+  
+**Standart Defination İşlemi**  
+![Screenshot_45](https://user-images.githubusercontent.com/50452706/70568093-3bcd7e00-1ba8-11ea-838c-38ad8d9b44c5.png)
+  
+**Gradiant İşlemi**  
+![Screenshot_43](https://user-images.githubusercontent.com/50452706/70568072-3112e900-1ba8-11ea-817c-665d06874c6c.png)
+  
   
