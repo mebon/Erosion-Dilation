@@ -101,9 +101,9 @@ namespace ErosionDilation
         {
             if (bmp != null)
             {
-                for (int x = 0; x < bmp.Height-1; x++)
+                for (int x = 0; x < bmp.Height - 1; x++)
                 {
-                    for (int y = 0; y < bmp.Width-1; y++)
+                    for (int y = 0; y < bmp.Width - 1; y++)
                     {
                         Color c = bmp.GetPixel(x, y);
 
@@ -228,8 +228,8 @@ namespace ErosionDilation
 
         private void buttonTersSimetri_Click(object sender, EventArgs e)
         {
-            
-            for (int x = 0; x < bmp.Height/2; x++)
+
+            for (int x = 0; x < bmp.Height / 2; x++)
             {
                 for (int y = 0; y < bmp.Width; y++)
                 {
@@ -283,7 +283,7 @@ namespace ErosionDilation
                     bmp.SetPixel(x, y, Color.FromArgb(r, g, b));
                 }
             }
-                   
+
             pictureBox1.Image = bmp;
             this.Refresh();
         }
@@ -353,11 +353,11 @@ namespace ErosionDilation
             int b1, b2, b3, b4, b5, b6, b7, b8, b9;
             for (int x = 1; x < bmp.Height - 2; x++)
             {
-                for(int y = 1; y < bmp.Width - 2; y++)
+                for (int y = 1; y < bmp.Width - 2; y++)
                 {
                     cl = bmp.GetPixel(x, y);
                     b5 = cl.R;
-                    if(b5 == 255)
+                    if (b5 == 255)
                     {
                         cl = bmp.GetPixel(x - 1, y - 1);
                         b1 = cl.R;
@@ -384,7 +384,7 @@ namespace ErosionDilation
                         else if (convulationSonuc < 0) xyler[x, y] = 0;
                         else xyler[x, y] = convulationSonuc;
                     }
-                    
+
 
 
                 }
@@ -474,13 +474,186 @@ namespace ErosionDilation
             {
                 radioButtonRGB.Checked = false;
                 radioButtonGrayScale.Checked = false;
+                radioButtonGrayScale.Checked = false;
+                radioButtonGrayScale.Checked = false;
                 radioButtonBitmap.Checked = false;
                 bmp = (Bitmap)Bitmap.FromFile(openFileDialog1.FileName);
                 pictureBox1.Image = bmp;
                 this.Refresh();
             }
         }
+
+        private void buttonGradient_Click(object sender, EventArgs e)
+        {
+           
+
+            int[,] xyler = new int[bmp.Height, bmp.Width];
+            Color cl;
+            int gradient;
+            int[,] gradientMatris = { { 0, 1 }, { 1, 0 } };
+            int b1, b2, b3, b4;
+            for (int x = 0; x < bmp.Height-1 ; x++)
+            {
+                for (int y = 0; y < bmp.Width-1 ; y++)
+                {
+
+                        cl = bmp.GetPixel(x , y );
+                        b1 = cl.R;
+                        cl = bmp.GetPixel(x +1, y );
+                        b2 = cl.R;
+                        cl = bmp.GetPixel(x , y + 1);
+                        b3 = cl.R;
+                        cl = bmp.GetPixel(x + 1, y +1);
+                        b4 = cl.R;
+
+                       
+
+                        gradient = gradientMatris[0, 0] * b1 + gradientMatris[0, 1] * b2 +
+                                   gradientMatris[1, 0] * b3 + gradientMatris[1, 1] * b4 ;
+
+                        if (gradient > 255) xyler[x, y] = 255;
+                        else if (gradient < 0) xyler[x, y] = 0;
+                        else xyler[x, y] = gradient;
+
+                    }
+
+                }
+            for (int x = 0; x < bmp.Height - 1; x++)
+            {
+                for (int y = 0; y < bmp.Width - 1; y++)
+                {
+                    if (xyler[x, y] == 255)
+                    {
+                        
+                    }
+                    else if (xyler[x, y] == 0)
+                    {
+                        bmp.SetPixel(x, y, Color.FromArgb(0, 0, 0));
+                    }
+                    else bmp.SetPixel(x, y, Color.FromArgb(xyler[x, y], xyler[x, y], xyler[x, y]));
+                }
+            }
+            pictureBox1.Image = bmp;
+            this.Refresh();
+        }
+        private double[] ortalama()
+        {
+            Color cl;
+            double toplamDeger = 0, pikselAdedi = 0;
+            double ortalama = 0.0;
+            for (int x = 0; x < bmp.Height; x++)
+            {
+                for (int y = 0; y < bmp.Width; y++)
+                {
+                    cl = bmp.GetPixel(x, y);
+                    toplamDeger += cl.R;
+                    pikselAdedi++;
+                }
+            }
+            ortalama = Convert.ToDouble(toplamDeger / pikselAdedi);
+            double[] degerler = { ortalama, pikselAdedi };
+            return degerler;
+        }
+        private double standartSapma()
+        {
+            double ortalamaDeger = ortalama()[0],  pikselSayisi = ortalama()[1];
+            double toplamDeger = 0, standartSapma = 0;
+            Color cl;
+            double farklarinKaresiToplami = 0;
+            for (int x = 0; x < bmp.Height; x++)
+            {
+                for (int y = 0; y < bmp.Width; y++)
+                {
+                    cl = bmp.GetPixel(x, y);
+                    farklarinKaresiToplami += Math.Pow(Convert.ToDouble(cl.R) - ortalamaDeger, 2 );
+
+                }
+            }
+            toplamDeger = ortalamaDeger / pikselSayisi-1;
+            standartSapma = Math.Sqrt(ortalamaDeger);
+            return standartSapma;
+
+        }
+        private void buttonStandartDefination_Click(object sender, EventArgs e)
+        {
+            labelOrtalama.Text = ortalama()[0].ToString();
+            labelStandartSapma.Text = Convert.ToInt32(standartSapma()).ToString();
+            standartSapma();
+            labelOrt1.Text = "";  labelort2.Text = "";  labelStnSp1.Text = ""; labelstnSp2.Text = "";
+            int fark = Math.Abs(Convert.ToInt32(ortalama()[0] - standartSapma()));
+            int toplam = Math.Abs(Convert.ToInt32(ortalama()[0] + standartSapma()));
+            labelEksi.Text = fark.ToString();
+            labelArti.Text = toplam.ToString();
+
+            for (int x = 0; x < bmp.Height; x++)
+            {
+                for (int y = 0; y < bmp.Width; y++)
+                {
+                    Color c = bmp.GetPixel(x, y);
+
+                    int r = c.R;
+                    int g = c.G;
+                    int b = c.B;
+                    if ((r + g + b) / 3 < toplam)
+                    {
+                        if (r <= 255)
+                        {
+                            if (r >= 210)
+                            {
+                                r = 255;
+                            }
+                            else r += 40;
+                        }
+                        if (g <= 255)
+                        {
+                            if (g >= 210)
+                            {
+                                g = 255;
+                            }
+                            else g += 40;
+                        }
+                        if (b <= 255)
+                        {
+                            if (b >= 210)
+                            {
+                                b = 255;
+                            }
+                            else b += 40;
+                        }
+                    }
+                    if ((r + g + b) / 3 < fark)
+                    {
+                        if (r >= 0)
+                        {
+                            if (r <= 40)
+                            {
+                                r = 0;
+                            }
+                            else r -= 40;
+                        }
+                        if (g >= 0)
+                        {
+                            if (g <= 40)
+                            {
+                                g = 0;
+                            }
+                            else g -= 40;
+                        }
+                        if (b >= 0)
+                        {
+                            if (b <= 40)
+                            {
+                                b = 0;
+                            }
+                            else b -= 40;
+                        }
+                    }
+                    bmp.SetPixel(x, y, Color.FromArgb(r, g, b));
+                }
+            }
+            pictureBox1.Image = bmp;
+            this.Refresh();
+        }
     }
-;
 }
 //Muhammed Emin Berkay KOCAOĞLU 201513171070
